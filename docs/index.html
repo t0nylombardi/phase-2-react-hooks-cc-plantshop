@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My React components</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Phase 2 Code Challenge: Plantsy</h1>
+<h2>Demo</h2>
+<p>Use this gif as an example of how the app should work.</p>
+<p><img src="https://curriculum-content.s3.amazonaws.com/phase-2/react-hooks-mock-code-challenge-plantshop/plantsy_demo.gif" alt="Demo GIF"></p>
+<h2>Instructions</h2>
+<p>Welcome to Plantsy! You've been tasked with building out some features for the
+admin side of a plant store. The designers have put together the components and
+CSS. Now it's up to you to bring the features to life by adding stateful logic
+as well as persisting data to the backend via our API.</p>
+<p>Your job will be to make our app work according to the user stories you will
+find the <a href="#Core-Deliverables">Core Deliverables</a> section.</p>
+<h2>Setup</h2>
+<ol>
+<li>Run <code>npm install</code> in your terminal.</li>
+<li>Run <code>npm run server</code>. This will run your backend on port <code>6001</code>.</li>
+<li>In a new terminal, run <code>npm start</code>.</li>
+</ol>
+<p>Make sure to open <a href="http://localhost:6001/plants">http://localhost:6001/plants</a>
+in the browser to verify that your backend is working before you proceed!</p>
+<h2>Endpoints</h2>
+<p>The base URL for your backend is: <code>http://localhost:6001</code></p>
+<h2>Core Deliverables</h2>
+<p>As a user:</p>
+<ol>
+<li>When the app starts, I can see all plants.</li>
+<li>I can add a new plant to the page by submitting the form.</li>
+<li>I can mark a plant as &quot;sold out&quot;.</li>
+<li>I can search for plants by their name and see a filtered list of plants.</li>
+</ol>
+<h3>Endpoints for Core Deliverables</h3>
+<h4>GET /plants</h4>
+<p>Example Response:</p>
+<pre class="prettyprint source lang-json"><code>[
+  {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Aloe&quot;,
+    &quot;image&quot;: &quot;./images/aloe.jpg&quot;,
+    &quot;price&quot;: 15.99
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;ZZ Plant&quot;,
+    &quot;image&quot;: &quot;./images/zz-plant.jpg&quot;,
+    &quot;price&quot;: 25.98
+  }
+]
+</code></pre>
+<h4>POST <code>/plants</code></h4>
+<p>Required Headers:</p>
+<pre class="prettyprint source lang-js"><code>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;
+}
+</code></pre>
+<p>Request Object:</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;name&quot;: &quot;string&quot;,
+  &quot;image&quot;: &quot;string&quot;,
+  &quot;price&quot;: number
+}
+</code></pre>
+<p>Example Response:</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;id&quot;: 1,
+  &quot;name&quot;: &quot;Aloe&quot;,
+  &quot;image&quot;: &quot;./images/aloe.jpg&quot;,
+  &quot;price&quot;: 15.99
+}
+</code></pre>
+<h2>Advanced Deliverables</h2>
+<p>These deliverables are not required to pass the code challenge, but if you have
+the extra time, or even after the code challenge, they are a great way to
+stretch your skills.</p>
+<p>You'll have to add additional elements for these features. Feel free to style
+them however you see fit!</p>
+<blockquote>
+<p>Note: If you are going to attempt these advanced deliverables, please be sure
+to have a working commit with all the Core Deliverables first!</p>
+</blockquote>
+<p>As a user:</p>
+<ol>
+<li>I can update the price of a plant and still see the updated price after
+refreshing the page.</li>
+<li>I can delete a plant and it is still gone when I refresh the page.</li>
+</ol>
+<h3>Endpoints for Advanced Deliverables</h3>
+<h4>PATCH /plants/:id</h4>
+<p>Required Headers:</p>
+<pre class="prettyprint source lang-js"><code>{
+  &quot;Content-Type&quot;: &quot;application/json&quot;
+}
+</code></pre>
+<p>Request Object:</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;price&quot;: number
+}
+</code></pre>
+<p>Example Response:</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;id&quot;: 1,
+  &quot;name&quot;: &quot;Aloe&quot;,
+  &quot;image&quot;: &quot;./images/aloe.jpg&quot;,
+  &quot;price&quot;: 16.99
+}
+</code></pre>
+<h4>DELETE /plants/:id</h4>
+<p>Example Response:</p>
+<pre class="prettyprint source lang-json"><code>{}
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

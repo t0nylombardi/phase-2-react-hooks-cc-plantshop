@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "better-docs": "^2.7.3",
+    "concurrently": "^8.2.2",
+    "jsdoc": "^4.0.3",
     "json-server": "^0.16.3",
     "node-fetch": "^2.7.0",
     "react": "^17.0.1",
@@ -10,9 +13,10 @@
     "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "server": "json-server --watch db.json -p 6001",
-    "test": "jest --bail"
+    "start": "concurrently \"npm run server\" \"react-scripts start\"",
+    "test": "jest --bail",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +48,8 @@
       "<rootDir>/jest.setup.js"
     ],
     "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": ["/test_suites"]
+    "testPathIgnorePatterns": [
+      "/test_suites"
+    ]
   }
 }
