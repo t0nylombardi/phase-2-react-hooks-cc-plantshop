@@ -57,11 +57,38 @@ function PlantPage() {
     setSearchTerm(event.target.value);
   };
 
+  /**
+   * Updates the plant information in the state.
+   *
+   * @param {Object} updatedPlant - The updated plant object.
+   */
+  const updatePlant = (updatedPlant) => {
+    setPlants((prevPlants) =>
+      prevPlants.map((plant) =>
+        plant.id === updatedPlant.id ? updatedPlant : plant
+      )
+    );
+  };
+
+  /**
+   * Deletes a plant from the list.
+   *
+   * @param {number} id - The ID of the plant to delete.
+   */
+  const deletePlant = (id) => {
+    setPlants((prevPlants) => prevPlants.filter((plant) => plant.id !== id));
+  };
+
   return (
     <main>
       <NewPlantForm url={API_URL} onAddNewPlant={addPlant} />
       <Search onSearch={handleSearch} />
-      <PlantList plants={filteredPlants} url={API_URL} />
+      <PlantList
+        plants={filteredPlants}
+        url={API_URL}
+        updatePlant={updatePlant}
+        deletePlant={deletePlant}
+      />
     </main>
   );
 }

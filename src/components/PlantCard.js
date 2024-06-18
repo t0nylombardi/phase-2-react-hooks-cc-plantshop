@@ -11,12 +11,14 @@ import React, { useState } from "react";
  * @param {string} props.plant.name - The name of the plant.
  * @param {string} props.plant.image - The image URL of the plant.
  * @param {number} props.plant.price - The price of the plant.
+ * @param {Function} props.updatePlant - Function to update a plant.
+ * @param {Function} props.deletePlant - Function to delete a plant.
  * @returns {JSX.Element} The rendered PlantCard component.
  */
-function PlantCard({ url, plant }) {
+function PlantCard({ url, plant, updatePlant, deletePlant }) {
   const { id, name, image, price } = plant;
-
   const [isInStock, setIsInStock] = useState(true);
+  const [newPrice, setNewPrice] = useState(price);
 
   /**
    * Toggles the stock status of the plant.
@@ -27,39 +29,33 @@ function PlantCard({ url, plant }) {
 
   /**
    * Handles the edit action for the plant, updating the price.
-   *
-   * @param {Object} event - The click event.
    */
-  const handleEdit = (e) => {
-    const newPrice = e.target.parentElement.querySelector("input").value;
+  const handleEdit = () => {
     fetch(`${url}/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "Application/JSON",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ price: newPrice }),
     })
       .then((response) => response.json())
       .then((updatedPlant) => {
-        e.target.parentElement.querySelector(
-          "input"
-        ).textContent = `Price: ${updatedPlant.price}`;
+        updatePlant(updatedPlant);
       })
       .catch((error) => console.error("Error updating plant:", error));
   };
 
   /**
    * Handles the delete action for the plant.
-   *
-   * @param {Object} event - The click event.
    */
-  const handleDelete = (e) => {
-    const id = e.target.parentElement.id.split("-")[1];
+  const handleDelete = () => {
     fetch(`${url}/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then(() => console.log("deleted"))
+      .then(() => {
+        deletePlant(id);
+      })
       .catch((error) => console.error("Error deleting plant:", error));
   };
 
@@ -68,7 +64,12 @@ function PlantCard({ url, plant }) {
       <img src={image} alt={name} />
       <h4>{name}</h4>
       <p className="card-price">
-        Price: $<input type="number" defaultValue={price} />
+        Price: $
+        <input
+          type="number"
+          value={newPrice}
+          onChange={(e) => setNewPrice(e.target.value)}
+        />
       </p>
       <button onClick={handleEdit}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
